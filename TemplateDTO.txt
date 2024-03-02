@@ -1,0 +1,49 @@
+package com.ssws.gp.dto;
+
+import java.io.Serializable;
+
+
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
+
+public class ;;;NOME_ENTIDADE;;;DTO implements Serializable{
+
+
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Long id;
+
+	//@Length(max = 8, message = "Campo SIGLA deve ter entre 8 caracteres")
+	//@NotEmpty(message = "NOME é requerido")
+	//@Length(min = 1, max = 30, message = "Campo NOME deve ter entre 1 e 8 caracteres")
+
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+
+	public ;;;NOME_ENTIDADE;;;DTO(;;;NOME_ENTIDADE;;; obj) {
+		super();
+		this.id     = obj.getId();
+
+		;;;IDX_MAP;;;
+
+	}
+
+	public ;;;NOME_ENTIDADE;;;DTO() {
+		super();
+	}
+
+
+}
