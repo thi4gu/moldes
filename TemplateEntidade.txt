@@ -1,0 +1,45 @@
+//package com.ssws.gp.manut.core;
+
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
+@Entity
+public class ;;;NOME_ENTIDADE;;; implements Serializable{
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+
+	//@Length(min = 1, max = 30, message = "Campo NOME deve ter entre 1 e 8 caracteres")
+	//@NotEmpty(message = "Nome é requerido")
+
+
+;;;ATRIBUTOS_INI;;;
+;;;ATRIBUTOS_FIM;;;
+
+	public ;;;NOME_ENTIDADE;;;() {
+		super();
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+
+}

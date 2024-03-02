@@ -2,7 +2,8 @@ from enum import Enum
 
 
 class TipoComponente(Enum):
-    DTO = 'dto'
+    DTO        = 'dto'
     REPOSITORY = 'repository'
-    SERVICE = 'service'
-    RESOURCE = 'resource'
+    SERVICE    = 'service'
+    RESOURCE   = 'resource'
+    ENTITY     = 'entity'
