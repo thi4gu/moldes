@@ -1,0 +1,9 @@
+package com.ssws.gp.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ;;;NOME_ENTIDADE;;;Repository extends JpaRepository<;;;NOME_ENTIDADE;;;, Long>{
+
+}
