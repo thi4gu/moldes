@@ -1,0 +1,61 @@
+package com.ssws.gp.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.stereotype.Service;
+
+import com.ssws.gp.dto.;;;TIPO_ENTIDADE;;;DTO;
+import com.ssws.gp.exception.ObjectNotFoundException;
+import com.ssws.gp.manut.core.;;;TIPO_ENTIDADE;;;;
+import com.ssws.gp.repository.;;;TIPO_ENTIDADE;;;Repository;
+
+
+@Service
+public class ;;;TIPO_ENTIDADE;;;Service {
+
+	@Autowired
+	private ;;;TIPO_ENTIDADE;;;Repository repository;
+;;;IDX_REP;;;
+
+	public ;;;TIPO_ENTIDADE;;; findById(Long id) {
+		Optional<;;;TIPO_ENTIDADE;;;> obj = repository.findById(id);
+		return obj.orElseThrow(() -> new ObjectNotFoundException(";;;TIPO_ENTIDADE;;; "+id+" nao encontrada!" ));
+	}
+
+;;;IDX_FBI;;;
+
+
+	public List<;;;TIPO_ENTIDADE;;;> findAll() {
+		return repository.findAll();
+	}
+
+
+
+	public ;;;TIPO_ENTIDADE;;;DTO create(;;;TIPO_ENTIDADE;;;DTO objDto) {
+		;;;TIPO_ENTIDADE;;; ;;;NOME_ENTIDADE;;; = new ;;;TIPO_ENTIDADE;;;();
+		;;;NOME_ENTIDADE;;;.setId(null);
+        ;;;IDX_MAP;;;
+        ;;;TIPO_ENTIDADE;;;DTO ;;;NOME_ENTIDADE;;;DTO = new ;;;TIPO_ENTIDADE;;;DTO(repository.save(;;;NOME_ENTIDADE;;;));
+		return ;;;NOME_ENTIDADE;;;DTO;
+	}
+
+	public ;;;TIPO_ENTIDADE;;; update(Long id, ;;;TIPO_ENTIDADE;;;DTO objDto) {
+		;;;TIPO_ENTIDADE;;; ;;;NOME_ENTIDADE;;;   = findById(id);
+;;;IDX_MAP;;;
+		return repository.save(;;;NOME_ENTIDADE;;;);
+	}
+
+	public void delete(Long id) {
+		findById(id);
+		try {
+			repository.deleteById(id);
+		} catch (DataIntegrityViolationException e) {
+			throw new com.ssws.gp.exception.DataIntegrityViolationException("Erro: ;;;TIPO_ENTIDADE;;; possui endereços associados");
+		}
+
+	}
+
+}

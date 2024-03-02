@@ -21,7 +21,7 @@ public class ;;;NOME_ENTIDADE;;;DTO implements Serializable{
 	//@Length(max = 8, message = "Campo SIGLA deve ter entre 8 caracteres")
 	//@NotEmpty(message = "NOME é requerido")
 	//@Length(min = 1, max = 30, message = "Campo NOME deve ter entre 1 e 8 caracteres")
-
+;;;IDX_ATR;;;
 
 	public Long getId() {
 		return id;
@@ -36,8 +36,7 @@ public class ;;;NOME_ENTIDADE;;;DTO implements Serializable{
 	public ;;;NOME_ENTIDADE;;;DTO(;;;NOME_ENTIDADE;;; obj) {
 		super();
 		this.id     = obj.getId();
-
-		;;;IDX_MAP;;;
+;;;IDX_MAP;;;
 
 	}
 
