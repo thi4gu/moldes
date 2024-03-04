@@ -1,4 +1,5 @@
 from TipoComponente import TipoComponente
+import os
 
 
 class Componente:
@@ -6,6 +7,20 @@ class Componente:
         self.tipo = tipo
         self.nome = nome
         self.elementos = elementos
+
+    @staticmethod
+    def init_pastas():
+
+        pasta = "saida"
+
+        if os.path.exists(pasta):
+            arquivos = os.listdir(pasta)
+            for arquivo in arquivos:
+                caminho_arquivo = os.path.join(pasta, arquivo)
+                if os.path.isfile(caminho_arquivo):
+                    os.remove(caminho_arquivo)
+        else:
+            os.makedirs(pasta)
 
     def gerar(self):
         #print(f"Gerando componente do tipo {self.tipo.value} com nome {self.nome}")
@@ -16,8 +31,8 @@ class Componente:
             self.gerarRepository()
         if self.tipo == TipoComponente.SERVICE:
             self.gerarService(atributosStr=self.elementos)
-        #if self.tipo == TipoComponente.resource:
-        #    self.gerarResource()
+        if self.tipo == TipoComponente.RESOURCE:
+            self.gerarResource()
 
     def gerarEntidade(self, atributosStr: str):
         with open('TemplateEntidade.txt', 'r') as arquivo:
@@ -187,6 +202,25 @@ class Componente:
         template = [linha.replace(";;;IDX_MAP;;;", "") for linha in template]
         template = [linha.replace(";;;IDX_REP;;;", "") for linha in template]
         template = [linha.replace(";;;IDX_FBI;;;", "") for linha in template]
+
+        with open(nomeArquivo, 'w') as arquivo:
+            arquivo.writelines(template)
+
+
+
+    def gerarResource(self):
+        with open('TemplateResource.txt', 'r') as arquivo:
+            template = arquivo.readlines()
+
+        tipo_entidade = self.nome
+        tipo_entidade = tipo_entidade.capitalize()
+
+        template = [linha.replace(";;;NOME_ENTIDADE;;;", self.nome.lower()) for linha in template]
+        template = [linha.replace(";;;TIPO_ENTIDADE;;;", tipo_entidade) for linha in template]
+
+
+
+        nomeArquivo = "saida/" + self.nome + "Resource.java"
 
         with open(nomeArquivo, 'w') as arquivo:
             arquivo.writelines(template)
