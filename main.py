@@ -6,6 +6,8 @@ from Componente import Componente
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
 
+    Componente.init_pastas()
+
     elementos = "Cidade,String.sigla,String.nome,Estado.estado.id_estado"
 
     componenteEntidade = Componente(TipoComponente.ENTITY, "Cidade", elementos)
